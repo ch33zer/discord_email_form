@@ -1,0 +1,41 @@
+<head>
+  <script type="text/javascript">
+    const URL = "https://discord.com/api/webhooks/1180413944683315243/XSiiSana3_S-YPPlWWRO6-iMblADt8VCRpNMUsI8NpsTpiM3xat04Fvl5LU4Gv6GmFQK"
+    console.log(URL)
+    window.addEventListener("load", () => {
+      console.log("loaded")
+      document.getElementById("submit").addEventListener("click", () => {
+        const email = document.getElementById("email").value
+        if (email.length == 0 || email.indexOf("@") == -1) {
+          alert("Enter an email")
+          return
+        }
+        console.log(email)
+        fetch(URL, {
+          body: JSON.stringify({
+            content: email,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        })
+        .then(function (res) {
+          console.log(res);
+          alert("Success!")
+        })
+        .catch(function (res) {
+          console.log(res);
+        });
+      })
+    })
+  </script>
+</head>
+<body>
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email">
+  <input type="submit" id="submit" value="Submit">
+  <p>
+    View the results at <a href="https://discord.gg/ENyZRg95ZX">https://discord.gg/ENyZRg95ZX</a>
+  </p>
+</body>
